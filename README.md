@@ -1,1 +1,4 @@
-# elixir-roman-numerals
+Elixir Roman Numerals
+=====================
+
+Run the tests: `mix test`
