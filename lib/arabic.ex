@@ -1,9 +1,15 @@
 defmodule Arabic do
-  def to_roman(arabic) when arabic == 1000, do: "M"
-  def to_roman(arabic) when arabic == 500, do: "D"
-  def to_roman(arabic) when arabic == 100, do: "C"
-  def to_roman(arabic) when arabic == 50, do: "L"
-  def to_roman(arabic) when arabic == 10, do: "X"
-  def to_roman(arabic) when arabic == 5, do: "V"
-  def to_roman(arabic), do: "I"
+  def to_roman(arabic), do: _to_roman(arabic, "")
+
+  defp _to_roman(arabic, roman) when arabic == 1000, do: "#{roman}M"
+  defp _to_roman(arabic, roman) when arabic == 500, do: "#{roman}D"
+  defp _to_roman(arabic, roman) when arabic == 100, do: "#{roman}C"
+  defp _to_roman(arabic, roman) when arabic == 50, do: "#{roman}L"
+  defp _to_roman(arabic, roman) when arabic == 10, do: "#{roman}X"
+  defp _to_roman(arabic, roman) when arabic == 5, do: "#{roman}V"
+  defp _to_roman(arabic, roman) when arabic == 1, do: "#{roman}I"
+
+  defp _to_roman(arabic, roman) when arabic < 4 do
+    _to_roman(arabic - 1, "#{roman}I")
+  end
 end
