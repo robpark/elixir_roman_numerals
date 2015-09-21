@@ -14,5 +14,13 @@ defmodule ArabicTest do
   test "summed digits" do
     assert Arabic.to_roman(2) == "II"
     assert Arabic.to_roman(3) == "III"
+    assert Arabic.to_roman(6) == "VI"
+    assert Arabic.to_roman(7) == "VII"
+    assert Arabic.to_roman(8) == "VIII"
+  end
+
+  test "decremented values" do
+    assert Arabic.to_roman(4) == "IV"
+    assert Arabic.to_roman(9) == "IX"
   end
 end
