@@ -20,7 +20,6 @@ defmodule ArabicTest do
     assert Arabic.to_roman(11) == "XI"
     assert Arabic.to_roman(12) == "XII"
     assert Arabic.to_roman(13) == "XIII"
-    assert Arabic.to_roman(11) == "XI"
     assert Arabic.to_roman(51) == "LI"
     assert Arabic.to_roman(101) == "CI"
     assert Arabic.to_roman(501) == "DI"
