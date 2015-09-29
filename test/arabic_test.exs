@@ -18,6 +18,9 @@ defmodule ArabicTest do
     assert Arabic.to_roman(7) == "VII"
     assert Arabic.to_roman(8) == "VIII"
     assert Arabic.to_roman(11) == "XI"
+    assert Arabic.to_roman(12) == "XII"
+    assert Arabic.to_roman(13) == "XIII"
+    assert Arabic.to_roman(11) == "XI"
     assert Arabic.to_roman(51) == "LI"
     assert Arabic.to_roman(101) == "CI"
     assert Arabic.to_roman(501) == "DI"
@@ -27,6 +30,7 @@ defmodule ArabicTest do
   test "decremented values" do
     assert Arabic.to_roman(4) == "IV"
     assert Arabic.to_roman(9) == "IX"
+    assert Arabic.to_roman(14) == "XIV"
     assert Arabic.to_roman(49) == "IL"
     assert Arabic.to_roman(99) == "IC"
     assert Arabic.to_roman(499) == "ID"
