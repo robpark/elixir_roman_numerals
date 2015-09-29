@@ -1,38 +1,37 @@
 defmodule ArabicTest do
   use ExUnit.Case
 
-  test "basic digits" do
-    assert Arabic.to_roman(1) == "I"
-    assert Arabic.to_roman(5) == "V"
-    assert Arabic.to_roman(10) == "X"
-    assert Arabic.to_roman(50) == "L"
-    assert Arabic.to_roman(100) == "C"
-    assert Arabic.to_roman(500) == "D"
-    assert Arabic.to_roman(1000) == "M"
+  test "generic" do
+    tuples = [
+      {:I, 1}, {:II, 2}, {:III, 3}, {:IV, 4}, {:V, 5}, {:VI, 6}, {:VII, 7}, {:VIII, 8}, {:IX, 9},
+      {:X, 10}, {:XI, 11}, {:XII, 12}, {:XIII, 13}, {:XIV, 14}, {:XV, 15}, {:XVI, 16}, {:XVII, 17},
+      {:XVIII, 18}, {:XIX, 19}, {:XX, 20}, {:XXI, 21}, {:XXII, 22}, {:XXIII, 23}, {:XXIV, 24},
+      {:XXV, 25}, {:XXVI, 26}, {:XXVII, 27}, {:XXVIII, 28}, {:XXIX, 29}, {:XXX, 30}, {:XXXI, 31},
+      {:XXXII, 32}, {:XXXIII, 33}, {:XXXIV, 34}, {:XXXV, 35}, {:XXXVI, 36}, {:XXXVII, 37},
+      {:XXXVIII, 38}, {:XXXIX, 39},
+      # {:XL, 40}, {:XLI, 41}, {:XLII, 42}, {:XLIII, 43}, {:XLIV, 44},
+      # {:XLV, 45}, {:XLVI, 46}, {:XLVII, 47}, {:XLVIII, 48},
+      {:IL, 49}, {:L, 50}, {:LI, 51},
+      {:IC, 99}, {:C, 100}, {:CI, 101},
+      {:ID, 499}, {:D, 500}, {:DI, 501},
+      {:IM, 999}, {:M, 1000}, {:MI, 1001}
+    ]
+    _execute_tests_for tuples
   end
 
-  test "summed digits" do
-    assert Arabic.to_roman(2) == "II"
-    assert Arabic.to_roman(3) == "III"
-    assert Arabic.to_roman(6) == "VI"
-    assert Arabic.to_roman(7) == "VII"
-    assert Arabic.to_roman(8) == "VIII"
-    assert Arabic.to_roman(11) == "XI"
-    assert Arabic.to_roman(12) == "XII"
-    assert Arabic.to_roman(13) == "XIII"
-    assert Arabic.to_roman(51) == "LI"
-    assert Arabic.to_roman(101) == "CI"
-    assert Arabic.to_roman(501) == "DI"
-    assert Arabic.to_roman(1001) == "MI"
+  defp _execute_tests_for([head|[]]) do
+    _assert_conversion head
   end
 
-  test "decremented values" do
-    assert Arabic.to_roman(4) == "IV"
-    assert Arabic.to_roman(9) == "IX"
-    assert Arabic.to_roman(14) == "XIV"
-    assert Arabic.to_roman(49) == "IL"
-    assert Arabic.to_roman(99) == "IC"
-    assert Arabic.to_roman(499) == "ID"
-    assert Arabic.to_roman(999) == "IM"
+  defp _execute_tests_for([head|tail]) do
+    _assert_conversion head
+    _execute_tests_for tail
+  end
+
+  defp _assert_conversion(tuple) do
+    arabic = elem tuple, 1
+    roman = to_string elem(tuple, 0)
+    assert Arabic.to_roman(arabic) == roman
+    IO.puts "#{arabic} ==> #{roman}"
   end
 end
