@@ -9,6 +9,7 @@ defmodule Arabic do
   end
 
   defp _to_roman(arabic, "XXXX"), do: _to_roman(arabic, "XL")
+  defp _to_roman(arabic, "CCCC"), do: _to_roman(arabic, "CD")
 
   defp _to_roman(arabic, roman) when arabic >= 999, do: _to_roman(arabic - 1000, "#{roman}M")
   defp _to_roman(arabic, roman) when arabic >= 499, do: _to_roman(arabic - 500, "#{roman}D")

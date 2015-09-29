@@ -11,8 +11,9 @@ defmodule ArabicTest do
       {:XXXVIII, 38}, {:XXXIX, 39}, {:XL, 40}, {:XLI, 41}, {:XLII, 42}, {:XLIII, 43}, {:XLIV, 44},
       {:XLV, 45}, {:XLVI, 46}, {:XLVII, 47}, {:XLVIII, 48},
       {:IL, 49}, {:L, 50}, {:LI, 51},
+      # {:XC, 90},
       {:IC, 99}, {:C, 100}, {:CI, 101},
-      {:ID, 499}, {:D, 500}, {:DI, 501},
+      {:CD, 400}, {:ID, 499}, {:D, 500}, {:DI, 501},
       {:IM, 999}, {:M, 1000}, {:MI, 1001}
     ]
     _execute_tests_for tuples
