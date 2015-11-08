@@ -22,6 +22,10 @@ defmodule ArabicTest do
     test "at most 3: #{elem pair, 1}" do
       _assert_no_more_than_3(unquote(pair))
     end
+
+    test "no repeats: #{elem pair, 1}" do
+      _assert_no_repeats(unquote(pair))
+    end
   end
 
   defp _assert_conversion(tuple) do
@@ -36,5 +40,12 @@ defmodule ArabicTest do
     refute String.contains?(roman, "XXXX"), "#{roman}: too many X"
     refute String.contains?(roman, "CCCC"), "#{roman}: too many C"
     refute String.contains?(roman, "MMMM"), "#{roman}: too many M"
+  end
+
+  defp _assert_no_repeats(tuple) do
+    roman = to_string elem(tuple, 0)
+    refute String.contains?(roman, "VV"), "#{roman}: repeated V"
+    refute String.contains?(roman, "LL"), "#{roman}: repeated L"
+    refute String.contains?(roman, "DD"), "#{roman}: repeated D"
   end
 end
