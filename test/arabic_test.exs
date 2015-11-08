@@ -34,6 +34,10 @@ defmodule ArabicTest do
     test "only 1 subraction per numeral: #{elem pair, 1}" do
       _assert_1_subtraction_per(unquote(pair))
     end
+
+    test "cannot subtract: #{elem pair, 1}" do
+      _assert_cannot_subtract(unquote(pair))
+    end
   end
 
   defp _assert_conversion(tuple) do
@@ -75,5 +79,12 @@ defmodule ArabicTest do
     refute String.contains?(roman, "XXC")
     refute String.contains?(roman, "CCD")
     refute String.contains?(roman, "CCM")
+  end
+
+  defp _assert_cannot_subtract(tuple) do
+    roman = to_string elem(tuple, 0)
+    refute String.contains?(roman, "VX")
+    refute String.contains?(roman, "LC")
+    refute String.contains?(roman, "DM")
   end
 end
