@@ -28,7 +28,11 @@ defmodule ArabicTest do
     end
 
     test "only subract from 2 next highest: #{elem pair, 1}" do
-      _assert_subtraction(unquote(pair))
+      _assert_subtraction_from_2_next(unquote(pair))
+    end
+
+    test "only 1 subraction per numeral: #{elem pair, 1}" do
+      _assert_1_subtraction_per(unquote(pair))
     end
   end
 
@@ -53,7 +57,7 @@ defmodule ArabicTest do
     refute String.contains?(roman, "DD"), "#{roman}: repeated D"
   end
 
-  defp _assert_subtraction(tuple) do
+  defp _assert_subtraction_from_2_next(tuple) do
     roman = to_string elem(tuple, 0)
     refute String.contains?(roman, "IL")
     refute String.contains?(roman, "IC")
@@ -61,5 +65,15 @@ defmodule ArabicTest do
     refute String.contains?(roman, "IM")
     refute String.contains?(roman, "XD")
     refute String.contains?(roman, "XM")
+  end
+
+  defp _assert_1_subtraction_per(tuple) do
+    roman = to_string elem(tuple, 0)
+    refute String.contains?(roman, "IIV")
+    refute String.contains?(roman, "IIX")
+    refute String.contains?(roman, "XXL")
+    refute String.contains?(roman, "XXC")
+    refute String.contains?(roman, "CCD")
+    refute String.contains?(roman, "CCM")
   end
 end
