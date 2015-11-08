@@ -8,10 +8,10 @@ defmodule ArabicTest do
      {:XXV, 25}, {:XXVI, 26}, {:XXVII, 27}, {:XXVIII, 28}, {:XXIX, 29}, {:XXX, 30}, {:XXXI, 31},
      {:XXXII, 32}, {:XXXIII, 33}, {:XXXIV, 34}, {:XXXV, 35}, {:XXXVI, 36}, {:XXXVII, 37},
      {:XXXVIII, 38}, {:XXXIX, 39}, {:XL, 40}, {:XLI, 41}, {:XLII, 42}, {:XLIII, 43}, {:XLIV, 44},
-     {:XLV, 45}, {:XLVI, 46}, {:XLVII, 47}, {:XLVIII, 48}, {:IL, 49}, {:L, 50}, {:LI, 51},
-     {:LIV, 54}, {:LV, 55}, {:LXVII, 67}, {:LXIX, 69}, {:LXXXIX, 89}, {:XC, 90}, {:IC, 99},
-     {:C, 100}, {:CI, 101}, {:CD, 400}, {:ID, 499}, {:D, 500}, {:DI, 501}, {:IM, 999}, {:M, 1000},
-     {:MI, 1001}
+     {:XLV, 45}, {:XLVI, 46}, {:XLVII, 47}, {:XLVIII, 48}, {:XLIX, 49}, {:L, 50}, {:LI, 51},
+     {:LIV, 54}, {:LV, 55}, {:LXVII, 67}, {:LXIX, 69}, {:LXXXIX, 89}, {:XC, 90}, {:XCIX, 99},
+     {:C, 100}, {:CI, 101}, {:CD, 400}, {:CDXCIX, 499}, {:D, 500}, {:DI, 501}, {:CMXCIX, 999},
+     {:M, 1000}, {:MI, 1001}
    ]
 
   Enum.each @tuples, fn(pair) ->
@@ -25,6 +25,10 @@ defmodule ArabicTest do
 
     test "no repeats: #{elem pair, 1}" do
       _assert_no_repeats(unquote(pair))
+    end
+
+    test "only subract from 2 next highest: #{elem pair, 1}" do
+      _assert_subtraction(unquote(pair))
     end
   end
 
@@ -47,5 +51,15 @@ defmodule ArabicTest do
     refute String.contains?(roman, "VV"), "#{roman}: repeated V"
     refute String.contains?(roman, "LL"), "#{roman}: repeated L"
     refute String.contains?(roman, "DD"), "#{roman}: repeated D"
+  end
+
+  defp _assert_subtraction(tuple) do
+    roman = to_string elem(tuple, 0)
+    refute String.contains?(roman, "IL")
+    refute String.contains?(roman, "IC")
+    refute String.contains?(roman, "ID")
+    refute String.contains?(roman, "IM")
+    refute String.contains?(roman, "XD")
+    refute String.contains?(roman, "XM")
   end
 end
