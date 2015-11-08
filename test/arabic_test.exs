@@ -10,8 +10,10 @@ defmodule ArabicTest do
      {:XXXVIII, 38}, {:XXXIX, 39}, {:XL, 40}, {:XLI, 41}, {:XLII, 42}, {:XLIII, 43}, {:XLIV, 44},
      {:XLV, 45}, {:XLVI, 46}, {:XLVII, 47}, {:XLVIII, 48}, {:XLIX, 49}, {:L, 50}, {:LI, 51},
      {:LIV, 54}, {:LV, 55}, {:LXVII, 67}, {:LXIX, 69}, {:LXXXIX, 89}, {:XC, 90}, {:XCIX, 99},
-     {:C, 100}, {:CI, 101}, {:CD, 400}, {:CDXCIX, 499}, {:D, 500}, {:DI, 501}, {:CMXCIX, 999},
-     {:M, 1000}, {:MI, 1001}
+     {:C, 100}, {:CI, 101}, {:CD, 400}, {:CDXCIX, 499}, {:D, 500}, {:DI, 501}, {:DXI, 511},
+     {:DCXLIX, 649}, {:DCCLXXVII, 777}, {:DCCC, 800}, {:DCCCIX, 809}, {:DCCCXCIX, 899},
+     {:CMXLIX, 949}, {:CML, 950}, {:CMLI, 951}, {:CMLXXXIX, 989}, {:CMXC, 990}, {:CMXCI, 991},
+     {:CMXCIX, 999}, {:M, 1000}, {:MI, 1001}
    ]
 
   Enum.each @tuples, fn(pair) ->
