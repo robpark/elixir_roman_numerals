@@ -2,8 +2,8 @@ defmodule RomanTest do
   use ExUnit.Case
 
   @tuples [
-     {:I, 1},
-     # {:II, 2}, {:III, 3}, {:IV, 4},
+     {:I, 1}, {:II, 2}, {:III, 3},
+     # {:IV, 4},
      {:V, 5},
      # {:VI, 6}, {:VII, 7}, {:VIII, 8}, {:IX, 9},
      {:X, 10},
@@ -28,7 +28,7 @@ defmodule RomanTest do
    ]
 
   Enum.each @tuples, fn(pair) ->
-    test "from #{elem pair, 1}" do
+    test "from #{elem pair, 0}" do
       _assert_conversion(unquote(pair))
     end
   end
