@@ -5,6 +5,8 @@ For the rules related to Roman Numerals see the [Agile Katas](http://agilekatas.
 
 Run the tests: `mix test`
 
+Note: with the combined test looking at 1..2000, the test suite runs for almost 2 minutes
+
 To play with the conversion: 
 
 * `iex -S mix`
